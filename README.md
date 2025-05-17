@@ -70,6 +70,26 @@
 
 ---
 
+**Extract Libraries**
+
+   The `libs` folder is provided as a zip file (`libs.zip`) to reduce repository size.  
+   **Extract `libs.zip` into the project root so that you have a `libs/` directory:**
+
+   - On Windows:  
+     Right-click `libs.zip` → "Extract All..." → Extract to the current directory.
+   - On Linux/macOS:  
+     ```sh
+     unzip libs.zip
+     ```
+
+   After extraction, you should have:
+   ```
+   libs/
+     FPDF/
+       fpdf.php
+       ...
+   ```
+
 ## 3. Basic Instructions on How to Use the Website
 
 ### a. Access the Website

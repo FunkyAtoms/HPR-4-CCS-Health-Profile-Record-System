@@ -1,6 +1,6 @@
-<?php include 'sidebar.php'; ?>
 <?php
-include 'connector.php';
+include 'functions/connector.php';
+include 'functions/sidebar.php';
 
 $employeeData = null; // Variable to store fetched employee data
 $errorMessage = null; // Variable to store error messages

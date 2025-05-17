@@ -1,7 +1,7 @@
-<?php include 'sidebar.php'; ?>
+<?php include 'functions/sidebar.php'; ?>
 <?php
 // Include database connection
-include 'connector.php';
+include 'functions/connector.php';
 
 // Fetch statistics
 // Count males and females

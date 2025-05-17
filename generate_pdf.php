@@ -1,7 +1,7 @@
 <?php
 ob_start(); // Start output buffering
 require_once 'libs/fpdf/fpdf.php'; // Include FPDF library
-include 'connector.php';
+include 'functions/connector.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['EmployeeID'])) {
     $employeeID = $_POST['EmployeeID'];

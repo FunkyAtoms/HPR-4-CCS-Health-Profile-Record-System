@@ -1,4 +1,5 @@
-<?php include 'sidebar.php'; ?>
+<?php include 'functions/sidebar.php';
+include 'functions/insert_employee.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@
 <body>
     <div class="container">
         <h1>Add New Employee</h1>
-        <form id="employeeForm" method="POST" action="insert_employee.php" enctype="multipart/form-data">
+        <form id="employeeForm" method="POST" action="functions/insert_employee.php" enctype="multipart/form-data">
             <h2>BASIC INFORMATION</h2>
             <label for="EmployeeID">EMPLOYEE ID:</label>
             <input type="text" id="EmployeeID" name="EmployeeID" required><br>

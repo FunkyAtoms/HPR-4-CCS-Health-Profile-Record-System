@@ -1,7 +1,7 @@
-<?php include 'sidebar.php'; ?>
 <?php
 // filepath: c:\xampp\htdocs\HPR_3\remove_employee.php
-include 'connector.php'; // Include database connection
+include 'functions/connector.php'; // Include database connection
+include 'functions/sidebar.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['EmployeeID'])) {
     $employeeID = $_POST['EmployeeID'];

@@ -134,4 +134,9 @@
 
 ---
 
+## Notes
+
+- The FPDF library is required for PDF generation. Make sure `libs/FPDF/` is present after extraction.
+- Only the fonts used in your PDFs need to be present in `libs/FPDF/font/`.
+
 **Enjoy using your Employee Management System!**

@@ -1,0 +1,242 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.content {
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    margin: 20px auto;
+    max-width: 600px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input, form select, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Table Styling */
+.employee-table-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Make table rows clickable */
+.employee-row {
+    cursor: pointer;
+}
+
+.employee-row:hover {
+    background-color: #e0e0e0; /* Slightly darker hover effect */
+}
+
+/* Employee Table Styling */
+#employeeTableContainer {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9; /* Light background for the container */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for better appearance */
+}
+
+#employeeTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333; /* Darker text for better readability */
+}
+
+#employeeTable th, #employeeTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#employeeTable th {
+    background-color: #007BFF; /* Blue header background */
+    color: white; /* White text for the header */
+    font-weight: bold;
+    text-transform: uppercase; /* Uppercase text for headers */
+}
+
+#employeeTable tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
+#employeeTable tr:hover {
+    background-color: #e0e0e0; /* Slightly darker hover effect */
+    cursor: pointer;
+}
+
+#employeeTable td {
+    vertical-align: middle; /* Align text vertically in the middle */
+}
+
+/* Add some spacing between the table and other elements */
+#employeeTableContainer h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navigation-buttons a, .navigation-buttons button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navigation-buttons a:hover, .navigation-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* Search Bar Styling */
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.search-container input {
+    padding: 10px;
+    font-size: 14px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Back to Main Menu Button Styling */
+a[href="index.php"] {
+    display: inline-block;
+    margin: 20px auto; /* Add spacing around the button */
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative; /* Ensure it stays in the normal flow */
+}
+
+a[href="index.php"]:hover {
+    background-color: #0056b3;
+}
+
+/* Error Message Styling */
+.error-message {
+    margin-top: 10px; /* Add spacing between the search bar and the error message */
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Cancel Button Styling */
+#cancelButton {
+    padding: 10px 15px;
+    background-color: #dc3545; /* Red background for cancel button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#cancelButton:hover {
+    background-color: #c82333; /* Darker red on hover */
+}

@@ -1,0 +1,219 @@
+/* General Styling for View Employee Page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+form input, form button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(7, auto);
+    gap: 8px;
+}
+
+.div1 {
+    grid-column: span 3 / span 3;
+}
+
+.div2 {
+    grid-column: span 2 / span 2;
+    grid-row-start: 2;
+}
+
+.div3 {
+    grid-column-start: 3;
+    grid-row-start: 2;
+}
+
+.div4 {
+    grid-row-start: 3;
+}
+
+.div5 {
+    grid-column: span 3 / span 3;
+    grid-row-start: 4;
+}
+
+.div6 {
+    grid-column: span 2 / span 2;
+    grid-row-start: 5;
+}
+
+.div7 {
+    grid-column: span 2 / span 2;
+    grid-row-start: 6;
+}
+
+.div8 {
+    grid-column: span 3 / span 3;
+    grid-row-start: 7;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Employee Table Container */
+.employee-table-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.employee-table-container label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#sortOrder {
+    padding: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Back Button Styling */
+a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table caption {
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Convert to PDF Button */
+.convert-to-pdf {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.convert-to-pdf:hover {
+    background-color: #218838;
+}
+
+/* Back and Go Back Buttons */
+.navigation-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navigation-buttons a, .navigation-buttons button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navigation-buttons a:hover, .navigation-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.navigation-buttons button {
+    border: none;
+}
+
+/* Content Styling */
+.content {
+    margin-left: 0;
+    transition: margin-left 0.3s;
+}
+
+.content.shifted {
+    margin-left: 250px;
+}

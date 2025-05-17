@@ -33,6 +33,13 @@ CREATE TABLE WithComorbidities (
     FOREIGN KEY (EmployeeID) REFERENCES BasicInformation(EmployeeID) ON DELETE CASCADE
 );
 
+-- Table: Underwent Surgery
+CREATE TABLE UnderwentSurgery (
+    EmployeeID INT,
+    HasUndergoneSurgery ENUM('Yes', 'No'),
+    FOREIGN KEY (EmployeeID) REFERENCES BasicInformation(EmployeeID) ON DELETE CASCADE
+);
+
 -- Table: Comorbidities
 CREATE TABLE Comorbidities (
     ComorbidityID INT AUTO_INCREMENT PRIMARY KEY,

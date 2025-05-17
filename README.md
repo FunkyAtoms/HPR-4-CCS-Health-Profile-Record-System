@@ -1,5 +1,26 @@
 # HPR-4-CCS-Health-Profile-Record-System
 
+## Features
+
+- **Employee CRUD**: Add, view, update, and remove employee records.
+- **Statistics Dashboard**: View employee statistics and analytics.
+- **PDF Generation**: Generate PDF reports for employee data.
+- **Sidebar Navigation**: Easy navigation with a collapsible sidebar.
+- **Image Uploads**: Upload and manage employee profile pictures.
+- **Responsive UI**: Clean and responsive design using custom CSS.
+- **Database Integration**: Uses MySQL for persistent employee data storage.
+
+## Project Structure
+
+- `add_employee.php`, `update_employee.php`, `remove_employee.php`, `view_employee.php`: Core PHP scripts for employee management.
+- `statistics.php`: Employee statistics and analytics.
+- `generate_pdf.php`: Generates PDF reports using FPDF.
+- `libs/`: Third-party libraries (FPDF, etc.).
+- `scripts/`: JavaScript files for UI interactivity.
+- `styles/`: CSS files for styling.
+- `Uploads/`: Uploaded images.
+- `emloyeemanagement.sql`: Database schema.
+
 ## 1. What to Download
 
 - **XAMPP** (for Apache, PHP, and MySQL):  

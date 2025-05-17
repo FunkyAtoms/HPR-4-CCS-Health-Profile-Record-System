@@ -24,6 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['EmployeeID'])) {
     $stmt->execute();
     $comorbidities = $stmt->get_result();
 
+    //Fetch Underwent Surgery
+    $stmt = $conn->prepare("SELECT * FROM UnderwentSurgery WHERE EmployeeID = ?");
+    $stmt->bind_param("i", $employeeID);
+    $stmt->execute();
+    $underwentSurgery = $stmt->get_result()->fetch_assoc();
+
     // Fetch surgeries
     $stmt = $conn->prepare("SELECT * FROM Operations WHERE EmployeeID = ?");
     $stmt->bind_param("i", $employeeID);
@@ -138,15 +144,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['EmployeeID'])) {
     $pdf->Ln(10);
 
     // Surgeries
-    // Underwent Surgery Section
-    $pdf->SetFont('Arial', 'B', 10);
-    $pdf->Cell(0, 10, 'Underwent Surgery', 0, 1);
-    $pdf->SetFont('Arial', '', 10);
-    $pdf->Cell(0, 10, 'Status: ' . ($underwentSurgery === 'Yes' ? 'Yes' : 'No'), 0, 1);
-    $pdf->Ln(10);
 
     $pdf->SetFont('Arial', 'B', 10);
-    $pdf->Cell(0, 10, 'Surgeries', 0, 1);
+    $pdf->Cell(0, 10, 'OPERATIONS', 0, 1);
+
+    // Underwent Surgery Section
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->Cell(40, 10, 'Underwent Surgery', 1);
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->Cell(10, 10, $underwentSurgery ? $underwentSurgery['HasUndergoneSurgery'] : 'No Status Available' , 1);
+    $pdf->Ln(10);
+
     if ($surgeries->num_rows > 0) {
         $pdf->SetFont('Arial', '', 8);
         $pdf->Cell(40, 10, 'NAME OF OPERATION', 1);

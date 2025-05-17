@@ -1,5 +1,5 @@
 <?php
-include 'connector.php';
+include 'funnctions/connector.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Basic Information

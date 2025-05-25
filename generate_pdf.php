@@ -144,7 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['EmployeeID'])) {
     $pdf->Ln(10);
 
     // Surgeries
-
     $pdf->SetFont('Arial', 'B', 10);
     $pdf->Cell(0, 10, 'OPERATIONS', 0, 1);
 

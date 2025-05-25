@@ -46,7 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['EmployeeID'])) {
 }
 
 // Fetch all employees for the table
-$allEmployees = $conn->query("SELECT EmployeeID, FirstName, LastName FROM BasicInformation ORDER BY LastName ASC");
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$query = "SELECT EmployeeID, FirstName, LastName FROM BasicInformation";
+if ($search !== '') {
+    $searchEscaped = $conn->real_escape_string($search);
+    $query .= " WHERE EmployeeID LIKE '%$searchEscaped%' OR CONCAT(FirstName, ' ', LastName) LIKE '%$searchEscaped%' OR CONCAT(LastName, ' ', FirstName) LIKE '%$searchEscaped%'";
+}
+$allEmployees = $conn->query($query);
 ?>
 
 <!DOCTYPE html>

@@ -19,6 +19,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['EmployeeID'])) {
         $errorMessage = "Employee not found."; // Updated code
     }
 
+    // Fetch comorbidities
+    $comorbidities = [];
+    $stmt = $conn->prepare("SELECT * FROM Comorbidities WHERE EmployeeID = ?");
+    $stmt->bind_param("i", $employeeID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $comorbidities[] = $row;
+    }
+    $stmt->close();
+
+    // Fetch surgeries
+    $surgeries = [];
+    $stmt = $conn->prepare("SELECT * FROM Operations WHERE EmployeeID = ?");
+    $stmt->bind_param("i", $employeeID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $surgeries[] = $row;
+    }
+    $stmt->close();
+
+    // Fetch clinic records
+    $clinicRecords = [];
+    $stmt = $conn->prepare("SELECT * FROM SchoolClinicRecord WHERE EmployeeID = ?");
+    $stmt->bind_param("i", $employeeID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $clinicRecords[] = $row;
+    }
     $stmt->close();
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Your existing POST handling code remains unchanged
@@ -219,7 +250,22 @@ $conn->close();
                         <h3>Comorbidities</h3>
                         <button type="button" id="AddComorbidity">Add Comorbidity</button>
                         <div id="ComorbiditiesContainer">
-                            <!-- Existing comorbidities will be dynamically added here -->
+                            <?php if (!empty($comorbidities)): ?>
+                                <?php foreach ($comorbidities as $c): ?>
+                                    <div>
+                                        <label>Comorbidity Details:</label>
+                                        <input type="text" name="ComorbiditiesDetails[]" value="<?php echo htmlspecialchars($c['ComorbiditiesDetails']); ?>" required>
+                                        <label>Maintenance Medication (Yes/No):</label>
+                                        <select name="MaintenanceMedication[]" required>
+                                            <option value="Yes" <?php echo $c['MaintenanceMedication'] === 'Yes' ? 'selected' : ''; ?>>Yes</option>
+                                            <option value="No" <?php echo $c['MaintenanceMedication'] === 'No' ? 'selected' : ''; ?>>No</option>
+                                        </select>
+                                        <label>Medication and Dosage:</label>
+                                        <input type="text" name="MedicationAndDosage[]" value="<?php echo htmlspecialchars($c['MedicationAndDosage']); ?>" required>
+                                        <button type="button" onclick="this.parentElement.remove()">Remove</button>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </div>
                     </div>
 
@@ -240,7 +286,21 @@ $conn->close();
                     <h2>School Clinic Record</h2>
                     <button type="button" id="AddClinicRecord">Add Clinic Record</button>
                     <div id="ClinicRecordContainer">
-                        <!-- Existing clinic records will be dynamically added here -->
+                        <?php if (!empty($clinicRecords)): ?>
+                            <?php foreach ($clinicRecords as $cr): ?>
+                                <div>
+                                    <label>Visit Date:</label>
+                                    <input type="date" name="VisitDate[]" value="<?php echo htmlspecialchars($cr['VisitDate']); ?>" required>
+                                    <label>Complaints:</label>
+                                    <input type="text" name="Complaints[]" value="<?php echo htmlspecialchars($cr['Complaints']); ?>" required>
+                                    <label>Intervention:</label>
+                                    <input type="text" name="Intervention[]" value="<?php echo htmlspecialchars($cr['Intervention']); ?>" required>
+                                    <label>Nurse on Duty:</label>
+                                    <input type="text" name="NurseOnDuty[]" value="<?php echo htmlspecialchars($cr['NurseOnDuty']); ?>" required>
+                                    <button type="button" onclick="this.parentElement.remove()">Remove</button>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
 
                     <button type="submit">Update</button>

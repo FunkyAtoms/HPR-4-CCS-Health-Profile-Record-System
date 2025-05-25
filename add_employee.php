@@ -1,5 +1,4 @@
-<?php include 'functions/sidebar.php';
-include 'functions/insert_employee.php'; ?>
+<?php include 'functions/sidebar.php';?>
 
 <!DOCTYPE html>
 <html lang="en">

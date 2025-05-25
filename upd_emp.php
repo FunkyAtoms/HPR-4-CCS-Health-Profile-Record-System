@@ -95,6 +95,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['EmployeeID'])) {
         exit();
     }
 
+    // Delete all old comorbidities, surgeries, and clinic records for this employee
+    $conn->query("DELETE FROM Comorbidities WHERE EmployeeID = '$employeeID'");
+    $conn->query("DELETE FROM Operations WHERE EmployeeID = '$employeeID'");
+    $conn->query("DELETE FROM SchoolClinicRecord WHERE EmployeeID = '$employeeID'");
+
     // Append Comorbidities
     if (isset($_POST['ComorbiditiesDetails'])) {
         foreach ($_POST['ComorbiditiesDetails'] as $index => $details) {
@@ -132,6 +137,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['EmployeeID'])) {
                     VALUES ('$employeeID', '$visitDate', '$complaints', '$intervention', '$nurse')";
             $conn->query($sql);
         }
+    }
+
+    // Update WithComorbidities
+    $withComorbidities = $_POST['WithComorbidities'];
+    // Check if a record exists for this employee
+    $checkStmt = $conn->prepare("SELECT COUNT(*) FROM WithComorbidities WHERE EmployeeID = ?");
+    $checkStmt->bind_param("i", $employeeID);
+    $checkStmt->execute();
+    $count = $checkStmt->get_result()->fetch_row()[0];
+    $checkStmt->close();
+
+    if ($count > 0) {
+        // Update existing record
+        $updateStmt = $conn->prepare("UPDATE WithComorbidities SET HasComorbidities = ? WHERE EmployeeID = ?");
+        $updateStmt->bind_param("si", $withComorbidities, $employeeID);
+        $updateStmt->execute();
+        $updateStmt->close();
+    } else {
+        // Insert new record
+        $insertStmt = $conn->prepare("INSERT INTO WithComorbidities (EmployeeID, HasComorbidities) VALUES (?, ?)");
+        $insertStmt->bind_param("is", $employeeID, $withComorbidities);
+        $insertStmt->execute();
+        $insertStmt->close();
+    }
+
+    // Update UnderwentSurgery (similar logic as WithComorbidities)
+    $underwentSurgery = $_POST['UnderwentSurgery'];
+    // Check if a record exists
+    $checkStmt2 = $conn->prepare("SELECT COUNT(*) FROM UnderwentSurgery WHERE EmployeeID = ?");
+    $checkStmt2->bind_param("i", $employeeID);
+    $checkStmt2->execute();
+    $count2 = $checkStmt2->get_result()->fetch_row()[0];
+    $checkStmt2->close();
+
+    if ($count2 > 0) {
+        // Update existing record
+        $updateStmt2 = $conn->prepare("UPDATE UnderwentSurgery SET HasUndergoneSurgery = ? WHERE EmployeeID = ?"); // Changed column name
+        $updateStmt2->bind_param("si", $underwentSurgery, $employeeID);
+        $updateStmt2->execute();
+        $updateStmt2->close();
+    } else {
+        // Insert new record
+        $insertStmt2 = $conn->prepare("INSERT INTO UnderwentSurgery (EmployeeID, HasUndergoneSurgery) VALUES (?, ?)");  // Changed column name
+        $insertStmt2->bind_param("is", $underwentSurgery, $employeeID);
+        $insertStmt2->execute();
+        $insertStmt2->close();
     }
 
     header("Location: index.php?success=1");

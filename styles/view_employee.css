@@ -1,31 +1,35 @@
 /* General Styling for View Employee Page */
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 20px;
+    margin: 10px;
+    padding: 10px;
     line-height: 1.6;
     background-color: #f9f9f9;
+    font-size: 14px;
 }
 
 h1, h2 {
     color: #333;
     text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 form {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
 form label {
     font-weight: bold;
-    margin-right: 10px;
+    margin-right: 5px;
+    font-size: 13px;
 }
 
 form input, form button {
-    padding: 10px;
-    margin: 5px;
-    font-size: 14px;
+    padding: 5px 8px;
+    margin: 2px;
+    font-size: 13px;
 }
 
 form button {
@@ -44,7 +48,7 @@ form button:hover {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(7, auto);
-    gap: 8px;
+    gap: 4px;
 }
 
 .div1 {
@@ -86,15 +90,15 @@ form button:hover {
 }
 
 img {
-    max-width: 100%;
+    max-width: 100px;
     border-radius: 8px;
 }
 
 /* Employee Table Container */
 .employee-table-container {
-    margin: 20px auto;
-    width: 90%;
-    max-width: 1200px;
+    margin: 10px auto;
+    width: 98%;
+    max-width: 700px;
     text-align: center;
 }
 
@@ -104,22 +108,22 @@ img {
 }
 
 #sortOrder {
-    padding: 8px;
-    font-size: 14px;
-    margin-bottom: 10px;
+    padding: 4px;
+    font-size: 13px;
+    margin-bottom: 5px;
 }
 
 /* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
-    font-size: 14px;
+    margin-top: 5px;
+    font-size: 13px;
 }
 
 table th, table td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 4px 6px;
     text-align: left;
 }
 
@@ -127,6 +131,7 @@ table th {
     background-color: #007BFF;
     color: white;
     font-weight: bold;
+    font-size: 13px;
 }
 
 table tr:nth-child(even) {
@@ -141,9 +146,9 @@ table tr:hover {
 /* Back Button Styling */
 a {
     display: block;
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     color: #007BFF;
     text-decoration: none;
 }
@@ -162,13 +167,13 @@ table caption {
 /* Convert to PDF Button */
 .convert-to-pdf {
     display: block;
-    margin: 20px auto;
-    padding: 10px 15px;
+    margin: 10px auto;
+    padding: 6px 10px;
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
@@ -182,18 +187,18 @@ table caption {
 /* Back and Go Back Buttons */
 .navigation-buttons {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .navigation-buttons a, .navigation-buttons button {
     display: inline-block;
-    margin: 10px;
-    padding: 10px 15px;
+    margin: 5px;
+    padding: 6px 10px;
     background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;

@@ -250,57 +250,53 @@ $conn->close();
                         <h3>Comorbidities</h3>
                         <button type="button" id="AddComorbidity">Add Comorbidity</button>
                         <div id="ComorbiditiesContainer">
-                            <?php if (!empty($comorbidities)): ?>
-                                <?php foreach ($comorbidities as $c): ?>
-                                    <div>
-                                        <label>Comorbidity Details:</label>
-                                        <input type="text" name="ComorbiditiesDetails[]" value="<?php echo htmlspecialchars($c['ComorbiditiesDetails']); ?>" required>
-                                        <label>Maintenance Medication (Yes/No):</label>
-                                        <select name="MaintenanceMedication[]" required>
-                                            <option value="Yes" <?php echo $c['MaintenanceMedication'] === 'Yes' ? 'selected' : ''; ?>>Yes</option>
-                                            <option value="No" <?php echo $c['MaintenanceMedication'] === 'No' ? 'selected' : ''; ?>>No</option>
-                                        </select>
-                                        <label>Medication and Dosage:</label>
-                                        <input type="text" name="MedicationAndDosage[]" value="<?php echo htmlspecialchars($c['MedicationAndDosage']); ?>" required>
-                                        <button type="button" onclick="this.parentElement.remove()">Remove</button>
-                                    </div>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
+                            <?php foreach ($comorbidities as $comorbidity): ?>
+                            <div>
+                                <label>Comorbidity Details:</label>
+                                <input type="text" name="ComorbiditiesDetails[]" value="<?php echo htmlspecialchars($comorbidity['ComorbiditiesDetails']); ?>" required>
+                                <label>Maintenance Medication (Yes/No):</label>
+                                <select name="MaintenanceMedication[]" required>
+                                    <option value="Yes" <?php echo $comorbidity['MaintenanceMedication'] === 'Yes' ? 'selected' : ''; ?>>Yes</option>
+                                    <option value="No" <?php echo $comorbidity['MaintenanceMedication'] === 'No' ? 'selected' : ''; ?>>No</option>
+                                </select>
+                                <label>Medication and Dosage:</label>
+                                <input type="text" name="MedicationAndDosage[]" value="<?php echo htmlspecialchars($comorbidity['MedicationAndDosage']); ?>" required>
+                                <button type="button" onclick="this.parentElement.remove()">Remove</button>
+                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
 
-                    <label for="UnderwentSurgery">Underwent Surgery:</label>
-                    <select id="UnderwentSurgery" name="UnderwentSurgery" required>
-                        <option value="Yes" <?php echo (isset($employeeData['UnderwentSurgery']) && $employeeData['UnderwentSurgery'] === 'Yes') ? 'selected' : ''; ?>>Yes</option>
-                        <option value="No" <?php echo (isset($employeeData['UnderwentSurgery']) && $employeeData['UnderwentSurgery'] === 'No') ? 'selected' : ''; ?>>No</option>
-                    </select><br>
-
-                    <div id="SurgerySection">
-                        <h3>Surgeries</h3>
-                        <button type="button" id="AddSurgery">Add Surgery</button>
-                        <div id="SurgeryContainer">
-                            <!-- Existing surgeries will be dynamically added here -->
+                    <h3>Operations</h3>
+                    <button type="button" id="AddSurgery">Add Operation</button>
+                    <div id="SurgeryContainer">
+                        <?php foreach ($surgeries as $surgery): ?>
+                        <div>
+                            <label>Surgery Name:</label>
+                            <input type="text" name="OperationName[]" value="<?php echo htmlspecialchars($surgery['OperationName']); ?>" required>
+                            <label>Date Performed:</label>
+                            <input type="date" name="DatePerformed[]" value="<?php echo htmlspecialchars($surgery['DatePerformed']); ?>" required>
+                            <button type="button" onclick="this.parentElement.remove()">Remove</button>
                         </div>
+                        <?php endforeach; ?>
                     </div>
 
-                    <h2>School Clinic Record</h2>
+                    <h3>School Clinic Records</h3>
                     <button type="button" id="AddClinicRecord">Add Clinic Record</button>
                     <div id="ClinicRecordContainer">
-                        <?php if (!empty($clinicRecords)): ?>
-                            <?php foreach ($clinicRecords as $cr): ?>
-                                <div>
-                                    <label>Visit Date:</label>
-                                    <input type="date" name="VisitDate[]" value="<?php echo htmlspecialchars($cr['VisitDate']); ?>" required>
-                                    <label>Complaints:</label>
-                                    <input type="text" name="Complaints[]" value="<?php echo htmlspecialchars($cr['Complaints']); ?>" required>
-                                    <label>Intervention:</label>
-                                    <input type="text" name="Intervention[]" value="<?php echo htmlspecialchars($cr['Intervention']); ?>" required>
-                                    <label>Nurse on Duty:</label>
-                                    <input type="text" name="NurseOnDuty[]" value="<?php echo htmlspecialchars($cr['NurseOnDuty']); ?>" required>
-                                    <button type="button" onclick="this.parentElement.remove()">Remove</button>
-                                </div>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                        <?php foreach ($clinicRecords as $record): ?>
+                        <div>
+                            <label>Visit Date:</label>
+                            <input type="date" name="VisitDate[]" value="<?php echo htmlspecialchars($record['VisitDate']); ?>" required>
+                            <label>Complaints:</label>
+                            <input type="text" name="Complaints[]" value="<?php echo htmlspecialchars($record['Complaints']); ?>" required>
+                            <label>Intervention:</label>
+                            <input type="text" name="Intervention[]" value="<?php echo htmlspecialchars($record['Intervention']); ?>" required>
+                            <label>Nurse on Duty:</label>
+                            <input type="text" name="NurseOnDuty[]" value="<?php echo htmlspecialchars($record['NurseOnDuty']); ?>" required>
+                            <button type="button" onclick="this.parentElement.remove()">Remove</button>
+                        </div>
+                        <?php endforeach; ?>
                     </div>
 
                     <button type="submit">Update</button>

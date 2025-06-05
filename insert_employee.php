@@ -109,38 +109,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // Process Comorbidities
-        if (isset($_POST['ComorbiditiesDetails'])) {
-            foreach ($_POST['ComorbiditiesDetails'] as $index => $details) {
-                $details = $conn->real_escape_string($details);
-                $medication = $conn->real_escape_string($_POST['MaintenanceMedication'][$index]);
-                $dosage = $conn->real_escape_string($_POST['MedicationAndDosage'][$index]);
-
-                $sql = "INSERT INTO Comorbidities (EmployeeID, ComorbiditiesDetails, MaintenanceMedication, MedicationAndDosage)
-                        VALUES ('$employeeID', '$details', '$medication', '$dosage')";
-                $conn->query($sql);
-            }
-        }
-
         // Process Surgeries
         if (isset($_POST['OperationName'])) {
             foreach ($_POST['OperationName'] as $index => $name) {
                 $name = $conn->real_escape_string($name);
                 $date = $conn->real_escape_string($_POST['DatePerformed'][$index]);
 
-                $sql = "INSERT INTO Operations (EmployeeID, OperationName, DatePerformed)
-                        VALUES ('$employeeID', '$name', '$date')";
-                $conn->query($sql);
-            }
-        }
-
-        // Save Operations (if any)
-        if (isset($_POST['OperationName'])) {
-            foreach ($_POST['OperationName'] as $index => $name) {
-                $name = $conn->real_escape_string($name);
-                $date = $conn->real_escape_string($_POST['DatePerformed'][$index]);
-
-                // Insert new operation record
                 $sql = "INSERT INTO Operations (EmployeeID, OperationName, DatePerformed)
                         VALUES ('$employeeID', '$name', '$date')";
                 $conn->query($sql);
@@ -155,21 +129,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $intervention = $conn->real_escape_string($_POST['Intervention'][$index]);
                 $nurse = $conn->real_escape_string($_POST['NurseOnDuty'][$index]);
 
-                $sql = "INSERT INTO SchoolClinicRecord (EmployeeID, VisitDate, Complaints, Intervention, NurseOnDuty)
-                        VALUES ('$employeeID', '$visitDate', '$complaints', '$intervention', '$nurse')";
-                $conn->query($sql);
-            }
-        }
-
-        // Save School Clinic Records (if any)
-        if (isset($_POST['VisitDate'])) {
-            foreach ($_POST['VisitDate'] as $index => $visitDate) {
-                $visitDate = $conn->real_escape_string($visitDate);
-                $complaints = $conn->real_escape_string($_POST['Complaints'][$index]);
-                $intervention = $conn->real_escape_string($_POST['Intervention'][$index]);
-                $nurse = $conn->real_escape_string($_POST['NurseOnDuty'][$index]);
-
-                // Insert new clinic record
                 $sql = "INSERT INTO SchoolClinicRecord (EmployeeID, VisitDate, Complaints, Intervention, NurseOnDuty)
                         VALUES ('$employeeID', '$visitDate', '$complaints', '$intervention', '$nurse')";
                 $conn->query($sql);

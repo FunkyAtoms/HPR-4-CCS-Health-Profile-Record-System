@@ -267,6 +267,12 @@ $conn->close();
                         </div>
                     </div>
 
+                    <label for="UnderwentSurgery">Have you undergone any surgical procedure:</label>
+                    <select id="UnderwentSurgery" name="UnderwentSurgery" required>
+                        <option value="Yes" <?php echo (isset($employeeData['UnderwentSurgery']) && $employeeData['UnderwentSurgery'] === 'Yes') ? 'selected' : ''; ?>>Yes</option>
+                        <option value="No" <?php echo (isset($employeeData['UnderwentSurgery']) && $employeeData['UnderwentSurgery'] === 'No') ? 'selected' : ''; ?>>No</option>
+                    </select><br>
+
                     <h3>Operations</h3>
                     <button type="button" id="AddSurgery">Add Operation</button>
                     <div id="SurgeryContainer">
